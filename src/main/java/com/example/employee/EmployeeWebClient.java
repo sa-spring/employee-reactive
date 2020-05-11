@@ -10,27 +10,19 @@ public class EmployeeWebClient {
 
     // public void consume() {
 
-    // // Mono<Employee> employeeMono = client.get().uri("/employees/{id}",
+    // Mono<Employee> employeeMono = client.get().uri("/employees/{id}",
     // "1").retrieve().bodyToMono(Employee.class);
 
-    // // employeeMono.subscribe(System.out::println);
+    // employeeMono.subscribe(System.out::println);
 
-    // client.get()
-    // .uri("/employees")
-    // .retrieve()
-    // .bodyToFlux(Employee.class)
-    // .map(this::doSomeSlowWork)
-    // .subscribe(employee -> {
-    // System.out.println("Client subscribes: "+ employee);
-    // });
+    // //
+    // client.get().uri("/employees").retrieve().bodyToFlux(Employee.class).map(this::doSomeSlowWork)
+    // // .subscribe(employee -> {
+    // // System.out.println("Client subscribes: " + employee);
+    // // });
     // }
 
     public void consume() {
-
-        // Mono<Employee> employeeMono = client.get().uri("/employees/{id}",
-        // "1").retrieve().bodyToMono(Employee.class);
-
-        // employeeMono.subscribe(System.out::println);
 
         client.get().uri("/employees").retrieve().bodyToFlux(Employee.class).map(this::doSomeSlowWork)
                 .subscribe(new Subscriber<Employee>() {
